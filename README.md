@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# Procédure d'installation du projet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Prérequis
 
-## Available Scripts
+Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur votre machine :
+- [Node.js](https://nodejs.org/) (version 14.x ou plus récente)
+- [npm](https://www.npmjs.com/) (généralement inclus avec Node.js)
+- [Java JDK](https://www.oracle.com/java/technologies/javase-downloads.html) (version 11 ou plus récente)
+- [Maven](https://maven.apache.org/) (pour la gestion des dépendances Java)
+- [Git](https://git-scm.com/) (pour cloner le repository)
+- [MySQL](https://www.mysql.com/) ou une autre base de données compatible
 
-In the project directory, you can run:
+## Clonage du repository
 
-### `npm start`
+Commencez par cloner le repository GitHub sur votre machine locale :
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+\`\`\`bash
+git clone https://github.com/tymacz/front-annuaire.git
+cd front-annuaire
+\`\`\`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation du frontend React
 
-### `npm test`
+1. Accédez au répertoire du frontend React :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+\`\`\`bash
+cd frontend
+\`\`\`
 
-### `npm run build`
+2. Installez les dépendances :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+\`\`\`bash
+npm install
+\`\`\`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Installez Material-UI (si ce n'est pas déjà fait) :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+\`\`\`bash
+npm install @mui/material @emotion/react @emotion/styled
+\`\`\`
 
-### `npm run eject`
+4. Pour démarrer l'application React en mode développement :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+\`\`\`bash
+npm start
+\`\`\`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+L'application devrait maintenant être accessible sur [http://localhost:3000](http://localhost:3000).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Installation de l'API Java
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Accédez au répertoire de l'API Java :
 
-## Learn More
+\`\`\`bash
+cd ../backend
+\`\`\`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Utilisez Maven pour installer les dépendances et compiler le projet :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+\`\`\`bash
+mvn clean install
+\`\`\`
 
-### Code Splitting
+3. Pour démarrer l'API Java :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+\`\`\`bash
+mvn spring-boot:run
+\`\`\`
 
-### Analyzing the Bundle Size
+L'API devrait maintenant être accessible sur [http://localhost:8080](http://localhost:8080).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Importation du dump SQL
 
-### Making a Progressive Web App
+1. Assurez-vous que MySQL est installé et en cours d'exécution.
+2. Créez une base de données pour votre projet :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+\`\`\`sql
+CREATE DATABASE nom_de_votre_base_de_donnees;
+\`\`\`
 
-### Advanced Configuration
+3. Importez le dump SQL dans la base de données. Remplacez \`nom_de_votre_dump.sql\` par le nom de votre fichier dump :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+\`\`\`bash
+mysql -u nom_utilisateur -p nom_de_votre_base_de_donnees < chemin/vers/nom_de_votre_dump.sql
+\`\`\`
 
-### Deployment
+## Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Assurez-vous que les fichiers de configuration pour le frontend et le backend sont correctement configurés pour se connecter l'un à l'autre et à la base de données. Cela peut inclure la modification des fichiers \`.env\` pour React et des fichiers de configuration \`application.properties\` ou \`application.yml\` pour Spring Boot.
 
-### `npm run build` fails to minify
+## Résumé des commandes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+\`\`\`bash
+# Cloner le repository
+git clone https://github.com/tymacz/front-annuaire.git
+cd front-annuaire
+
+# Installer et démarrer le frontend React
+cd frontend
+npm install
+npm install @mui/material @emotion/react @emotion/styled
+npm start
+
+# Installer et démarrer l'API Java
+cd ../backend
+mvn clean install
+mvn spring-boot:run
+
+# Importer le dump SQL
+# (exécuter ces commandes dans le terminal MySQL)
+CREATE DATABASE nom_de_votre_base_de_donnees;
+mysql -u nom_utilisateur -p nom_de_votre_base_de_donnees < chemin/vers/nom_de_votre_dump.sql
+\`\`\`
