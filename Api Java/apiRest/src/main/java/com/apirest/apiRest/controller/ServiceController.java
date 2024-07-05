@@ -16,10 +16,6 @@ public class ServiceController {
 
     private final ServicesService servicesService;
 
-    @PostMapping("/createPlusieur")
-    public List<Services> createPlusieur(@RequestBody List<Services> servicesList) {
-        return servicesService.createServices(servicesList);
-    }
     @PostMapping("/create")
     public Services create(@RequestBody Services services) {
         return servicesService.createService(services);

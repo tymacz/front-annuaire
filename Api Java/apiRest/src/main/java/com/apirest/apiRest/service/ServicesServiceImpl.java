@@ -16,16 +16,7 @@ public class ServicesServiceImpl implements ServicesService {
 
 
     @Override
-    public List<Services> createServices(List<Services> serviceList) {
-        for (Services services : serviceList) {
-            createService(services); // Appel à la méthode createSalarie pour chaque salarié
-        }
-        return serviceList; // Vous pouvez retourner la liste créée si nécessaire
-    }
-
-    @Override
     public Services createService(Services services) {
-        // Logique pour créer un seul salarié
         return servicesRepository.save(services);
     }
 
@@ -41,12 +32,12 @@ public class ServicesServiceImpl implements ServicesService {
                     p.setName(services.getName());
                     p.setDescription(services.getDescription());
                     return servicesRepository.save(p);
-                }).orElseThrow(()-> new RuntimeException("service introuvable"));
+                }).orElseThrow(()-> new RuntimeException("not found"));
     }
 
     @Override
     public String deleteService(int id) {
         servicesRepository.deleteById((long) id);
-        return "service supprimer ";
+        return "delete ";
     }
 }
