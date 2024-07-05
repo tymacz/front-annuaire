@@ -5,6 +5,7 @@ import { fetchData, createRows, updateRows, deleteRows } from './function/fetch'
 import { detectConnexion } from "./function/detectConnexion";
 import { CssBaseline, ThemeProvider, Alert, Snackbar } from "@mui/material";
 import { darkTheme, lightTheme } from "./theme";
+import { detectAdmin } from "./function/detectAdmin";
 
 
 const Sites = () => {
@@ -18,6 +19,7 @@ const Sites = () => {
 
     useEffect(() => {
         detectConnexion(sessionStorage);
+        detectAdmin(sessionStorage);
         fetchData("sites").then(setData);
         fetchData("services").then(setServices);
     }, []);

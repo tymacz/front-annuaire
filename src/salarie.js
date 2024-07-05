@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ResponsiveAppBar from "./header";
 import DataTableAdmin from "./tableAdmin";
+import { detectAdmin } from "./function/detectAdmin";
 import { fetchData, createRows, updateRows, deleteRows } from './function/fetch';
 import { detectConnexion } from "./function/detectConnexion";
 import { CssBaseline, ThemeProvider, Alert, Stack, Snackbar } from "@mui/material";
@@ -18,6 +19,7 @@ const Salarie = () => {
 
     useEffect(() => {
         detectConnexion(sessionStorage);
+        detectAdmin(sessionStorage);
         fetchData("salaries").then(setData);
         fetchData("sites").then(setSites);
         fetchData("services").then(setServices);

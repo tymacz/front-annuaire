@@ -39,7 +39,7 @@ function App() {
       setKeySequence((prev) => {
         const newSequence = (prev + event.key).slice(-3);
         if (sessionStorage.getItem("admin") === "true") {
-          if (newSequence === 'max') {
+          if (newSequence === 'adm') {
             setAdmin(true);
             sessionStorage.setItem('adminMode', 'true'); // Stocker l'état d'administrateur dans le sessionStorage
           }
